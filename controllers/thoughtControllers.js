@@ -2,6 +2,7 @@ const { isValidObjectId } = require('mongoose');
 const { User, Thought } = require('../models');
 
 module.exports = {
+  //retrieves all thoughts
   async getAllThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
@@ -11,6 +12,7 @@ module.exports = {
     }
   },
 
+  //retrieves a specific thought
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId });
@@ -25,6 +27,7 @@ module.exports = {
     }
   },
 
+  //allows a user to create a thought
   async createThought(req, res) {
     try {
       const { thoughtText, username } = req.body;
@@ -48,6 +51,7 @@ module.exports = {
     }
   },
 
+  //allows a thought to be updated
   async updateThought(req, res) {
     try {
       const { thoughtId } = req.params;
@@ -69,6 +73,7 @@ module.exports = {
     }
   },
 
+  //deletes a thought
   async deleteThought(req, res) {
     try {
       const { thoughtId } = req.params;
@@ -93,6 +98,7 @@ module.exports = {
     }
   },
 
+  //creates a reaction to a thought
   async createReaction(req, res) {
     try {
       const { thoughtId } = req.params;
@@ -116,6 +122,7 @@ module.exports = {
     }
   },
 
+  //deletes a reaction to a specific thought
   async deleteReaction(req, res) {
     try {
       const { thoughtId, reactionId } = req.params;
